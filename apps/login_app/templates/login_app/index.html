@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Index page.</title>
+</head>
+
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li style="color:red">
+            {% if message.tags %}
+                class="{{ message.tags }}"
+            {% endif %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                Important:
+            {% endif %}
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>REGISTER HERE</h1>
+    <form class="" action="/register" method="post">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" placeholder="enter your first name" value="James">
+        <br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" placeholder="enter your last name" value="ORourke">
+        <br>
+
+        <label for="email">Email Addr:</label>
+        <input type="text" name="email" placeholder="enter your email" value="james@greenfeather.net">
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="enter a password" value="foo123">
+        <br>
+
+        <label for="passwordc">Verify Password:</label>
+        <input type="password" name="passwordc" placeholder="reenter a password" value="foo123">
+        <br>
+
+        <button type="submit" name="submit">Click here to Register</button>
+    </form>
+
+    <h1>LOG IN HERE</h1>
+    <form class="" action="/login" method="post">
+        {% csrf_token %}
+        <label for="email">Email Addr:</label>
+        <input type="text" name="email" placeholder="enter your email" value="james@greenfeather.net">
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="enter a password" value="foo123">
+        <br>
+
+        <button type="submit" name="submit">Click here to Login!</button>
+    </form>
+</body>
+
+</html>
